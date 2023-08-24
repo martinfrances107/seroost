@@ -1,12 +1,9 @@
 [workspace]
 resolver = "2"
-members = [
-  "./lib",
-  "./server"
-]
+members = ["./lib", "./server"]
 
 [workspace.package]
 license = "./LICENSE"
-readme = "README.md"
+readme = "./README.md"
 version = "0.1.0"
 edition = "2021"
