@@ -1,3 +1,4 @@
+#![allow(clippy::needless_return)]
 extern crate poppler;
 extern crate serde;
 extern crate seroost_lib;
