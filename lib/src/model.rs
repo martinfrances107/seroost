@@ -41,18 +41,18 @@ impl Model {
 
     pub fn search_query(&self, query: &[char]) -> Vec<(PathBuf, f32)> {
         let mut result = Vec::new();
-        let tokens = Lexer::new(&query).collect::<Vec<_>>();
+        let tokens = Lexer::new(query).collect::<Vec<_>>();
         for (path, doc) in &self.docs {
             let mut rank = 0f32;
             for token in &tokens {
-                rank += compute_tf(token, doc) * compute_idf(&token, self.docs.len(), &self.df);
+                rank += compute_tf(token, doc) * compute_idf(token, self.docs.len(), &self.df);
             }
             // TODO: investigate the sources of NaN
             if !rank.is_nan() {
                 result.push((path.clone(), rank));
             }
         }
-        result.sort_by(|(_, rank1), (_, rank2)| rank1.partial_cmp(rank2).expect(&format!("{rank1} and {rank2} are not comparable")));
+        result.sort_by(|(_, rank1), (_, rank2)| rank1.partial_cmp(rank2).unwrap_or_else(|| panic!("{rank1} and {rank2} are not comparable")));
         result.reverse();
         result
     }

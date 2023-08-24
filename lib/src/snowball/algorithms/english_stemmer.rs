@@ -8,19 +8,19 @@
 use crate::snowball::SnowballEnv;
 use crate::snowball::Among;
 
-static A_0: &'static [Among<Context>; 3] = &[
+static A_0: &[Among<Context>; 3] = &[
     Among("arsen", -1, -1, None),
     Among("commun", -1, -1, None),
     Among("gener", -1, -1, None),
 ];
 
-static A_1: &'static [Among<Context>; 3] = &[
+static A_1: &[Among<Context>; 3] = &[
     Among("'", -1, 1, None),
     Among("'s'", 0, 1, None),
     Among("'s", -1, 1, None),
 ];
 
-static A_2: &'static [Among<Context>; 6] = &[
+static A_2: &[Among<Context>; 6] = &[
     Among("ied", -1, 2, None),
     Among("s", -1, 3, None),
     Among("ies", 1, 2, None),
@@ -29,7 +29,7 @@ static A_2: &'static [Among<Context>; 6] = &[
     Among("us", 1, -1, None),
 ];
 
-static A_3: &'static [Among<Context>; 13] = &[
+static A_3: &[Among<Context>; 13] = &[
     Among("", -1, 3, None),
     Among("bb", 0, 2, None),
     Among("dd", 0, 2, None),
@@ -45,7 +45,7 @@ static A_3: &'static [Among<Context>; 13] = &[
     Among("iz", 0, 1, None),
 ];
 
-static A_4: &'static [Among<Context>; 6] = &[
+static A_4: &[Among<Context>; 6] = &[
     Among("ed", -1, 2, None),
     Among("eed", 0, 1, None),
     Among("ing", -1, 2, None),
@@ -54,7 +54,7 @@ static A_4: &'static [Among<Context>; 6] = &[
     Among("ingly", -1, 2, None),
 ];
 
-static A_5: &'static [Among<Context>; 24] = &[
+static A_5: &[Among<Context>; 24] = &[
     Among("anci", -1, 3, None),
     Among("enci", -1, 2, None),
     Among("ogi", -1, 13, None),
@@ -81,7 +81,7 @@ static A_5: &'static [Among<Context>; 24] = &[
     Among("ousness", -1, 10, None),
 ];
 
-static A_6: &'static [Among<Context>; 9] = &[
+static A_6: &[Among<Context>; 9] = &[
     Among("icate", -1, 4, None),
     Among("ative", -1, 6, None),
     Among("alize", -1, 3, None),
@@ -93,7 +93,7 @@ static A_6: &'static [Among<Context>; 9] = &[
     Among("ness", -1, 5, None),
 ];
 
-static A_7: &'static [Among<Context>; 18] = &[
+static A_7: &[Among<Context>; 18] = &[
     Among("ic", -1, 1, None),
     Among("ance", -1, 1, None),
     Among("ence", -1, 1, None),
@@ -114,12 +114,12 @@ static A_7: &'static [Among<Context>; 18] = &[
     Among("ement", 16, 1, None),
 ];
 
-static A_8: &'static [Among<Context>; 2] = &[
+static A_8: &[Among<Context>; 2] = &[
     Among("e", -1, 1, None),
     Among("l", -1, 2, None),
 ];
 
-static A_9: &'static [Among<Context>; 8] = &[
+static A_9: &[Among<Context>; 8] = &[
     Among("succeed", -1, -1, None),
     Among("proceed", -1, -1, None),
     Among("exceed", -1, -1, None),
@@ -130,7 +130,7 @@ static A_9: &'static [Among<Context>; 8] = &[
     Among("outing", -1, -1, None),
 ];
 
-static A_10: &'static [Among<Context>; 18] = &[
+static A_10: &[Among<Context>; 18] = &[
     Among("andes", -1, -1, None),
     Among("atlas", -1, -1, None),
     Among("bias", -1, -1, None),
@@ -151,11 +151,11 @@ static A_10: &'static [Among<Context>; 18] = &[
     Among("ugly", -1, 8, None),
 ];
 
-static G_v: &'static [u8; 4] = &[17, 65, 16, 1];
+static G_v: &[u8; 4] = &[17, 65, 16, 1];
 
-static G_v_WXY: &'static [u8; 5] = &[1, 17, 65, 208, 1];
+static G_v_WXY: &[u8; 5] = &[1, 17, 65, 208, 1];
 
-static G_valid_LI: &'static [u8; 3] = &[55, 141, 2];
+static G_valid_LI: &[u8; 3] = &[55, 141, 2];
 
 #[derive(Clone)]
 struct Context {
@@ -169,7 +169,7 @@ fn r_prelude(env: &mut SnowballEnv, context: &mut Context) -> bool {
     let v_1 = env.cursor;
     'lab0: loop {
         env.bra = env.cursor;
-        if !env.eq_s(&"'") {
+        if !env.eq_s("'") {
             break 'lab0;
         }
         env.ket = env.cursor;
@@ -182,7 +182,7 @@ fn r_prelude(env: &mut SnowballEnv, context: &mut Context) -> bool {
     let v_2 = env.cursor;
     'lab1: loop {
         env.bra = env.cursor;
-        if !env.eq_s(&"y") {
+        if !env.eq_s("y") {
             break 'lab1;
         }
         env.ket = env.cursor;
@@ -205,7 +205,7 @@ fn r_prelude(env: &mut SnowballEnv, context: &mut Context) -> bool {
                             break 'lab6;
                         }
                         env.bra = env.cursor;
-                        if !env.eq_s(&"y") {
+                        if !env.eq_s("y") {
                             break 'lab6;
                         }
                         env.ket = env.cursor;
@@ -336,14 +336,14 @@ fn r_shortv(env: &mut SnowballEnv, context: &mut Context) -> bool {
 }
 
 fn r_R1(env: &mut SnowballEnv, context: &mut Context) -> bool {
-    if !(context.i_p1 <= env.cursor){
+    if context.i_p1 > env.cursor{
         return false;
     }
     return true;
 }
 
 fn r_R2(env: &mut SnowballEnv, context: &mut Context) -> bool {
-    if !(context.i_p2 <= env.cursor){
+    if context.i_p2 > env.cursor{
         return false;
     }
     return true;
@@ -493,13 +493,13 @@ fn r_Step_1c(env: &mut SnowballEnv, context: &mut Context) -> bool {
     'lab0: loop {
         let v_1 = env.limit - env.cursor;
         'lab1: loop {
-            if !env.eq_s_b(&"y") {
+            if !env.eq_s_b("y") {
                 break 'lab1;
             }
             break 'lab0;
         }
         env.cursor = env.limit - v_1;
-        if !env.eq_s_b(&"Y") {
+        if !env.eq_s_b("Y") {
             return false;
         }
         break 'lab0;
@@ -580,7 +580,7 @@ fn r_Step_2(env: &mut SnowballEnv, context: &mut Context) -> bool {
             return false;
         }
     } else if among_var == 13 {
-        if !env.eq_s_b(&"l") {
+        if !env.eq_s_b("l") {
             return false;
         }
         if !env.slice_from("og") {
@@ -662,13 +662,13 @@ fn r_Step_4(env: &mut SnowballEnv, context: &mut Context) -> bool {
         'lab0: loop {
             let v_1 = env.limit - env.cursor;
             'lab1: loop {
-                if !env.eq_s_b(&"s") {
+                if !env.eq_s_b("s") {
                     break 'lab1;
                 }
                 break 'lab0;
             }
             env.cursor = env.limit - v_1;
-            if !env.eq_s_b(&"t") {
+            if !env.eq_s_b("t") {
                 return false;
             }
             break 'lab0;
@@ -718,7 +718,7 @@ fn r_Step_5(env: &mut SnowballEnv, context: &mut Context) -> bool {
         if !r_R2(env, context) {
             return false;
         }
-        if !env.eq_s_b(&"l") {
+        if !env.eq_s_b("l") {
             return false;
         }
         if !env.slice_del() {
@@ -791,10 +791,8 @@ fn r_exception1(env: &mut SnowballEnv, context: &mut Context) -> bool {
         if !env.slice_from("onli") {
             return false;
         }
-    } else if among_var == 11 {
-        if !env.slice_from("singl") {
-            return false;
-        }
+    } else if among_var == 11 && !env.slice_from("singl") {
+        return false;
     }
     return true;
 }
@@ -810,7 +808,7 @@ fn r_postlude(env: &mut SnowballEnv, context: &mut Context) -> bool {
                 let v_2 = env.cursor;
                 'lab3: loop {
                     env.bra = env.cursor;
-                    if !env.eq_s(&"Y") {
+                    if !env.eq_s("Y") {
                         break 'lab3;
                     }
                     env.ket = env.cursor;

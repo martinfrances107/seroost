@@ -55,7 +55,7 @@ fn serve_api_search(model: Arc<Mutex<Model>>, mut request: Request) -> io::Resul
 
     let content_type_header = Header::from_bytes("Content-Type", "application/json")
         .expect("That we didn't put any garbage in the headers");
-    request.respond(Response::from_string(&json).with_header(content_type_header))
+    request.respond(Response::from_string(json).with_header(content_type_header))
 }
 
 fn serve_api_stats(model: Arc<Mutex<Model>>, request: Request) -> io::Result<()> {
@@ -84,7 +84,7 @@ fn serve_api_stats(model: Arc<Mutex<Model>>, request: Request) -> io::Result<()>
 
     let content_type_header = Header::from_bytes("Content-Type", "application/json")
         .expect("That we didn't put any garbage in the headers");
-    request.respond(Response::from_string(&json).with_header(content_type_header))
+    request.respond(Response::from_string(json).with_header(content_type_header))
 }
 
 fn serve_request(model: Arc<Mutex<Model>>, request: Request) -> io::Result<()> {
@@ -112,7 +112,7 @@ fn serve_request(model: Arc<Mutex<Model>>, request: Request) -> io::Result<()> {
 }
 
 pub fn start(address: &str, model: Arc<Mutex<Model>>) -> Result<(), ()> {
-    let server = Server::http(&address).map_err(|err| {
+    let server = Server::http(address).map_err(|err| {
         eprintln!("ERROR: could not start HTTP server at {address}: {err}");
     })?;
 

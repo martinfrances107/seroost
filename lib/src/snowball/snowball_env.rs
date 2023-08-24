@@ -260,10 +260,10 @@ impl<'a> SnowballEnv<'a> {
     pub fn insert(&mut self, bra: i32, ket: i32, s: &str) {
         let adjustment = self.replace_s(bra, ket, s);
         if bra <= self.bra {
-            self.bra = self.bra + adjustment;
+            self.bra += adjustment;
         }
         if bra <= self.ket {
-            self.ket = self.ket + adjustment;
+            self.ket += adjustment;
         }
     }
 
