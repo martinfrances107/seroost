@@ -1,7 +1,7 @@
-use std::collections::HashMap;
-use std::path::{PathBuf, Path};
-use serde::{Deserialize, Serialize};
 use super::lexer::Lexer;
+use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
+use std::path::{Path, PathBuf};
 use std::time::SystemTime;
 
 type DocFreq = HashMap<String, usize>;
@@ -52,12 +52,21 @@ impl Model {
                 result.push((path.clone(), rank));
             }
         }
-        result.sort_by(|(_, rank1), (_, rank2)| rank1.partial_cmp(rank2).unwrap_or_else(|| panic!("{rank1} and {rank2} are not comparable")));
+        result.sort_by(|(_, rank1), (_, rank2)| {
+            rank1
+                .partial_cmp(rank2)
+                .unwrap_or_else(|| panic!("{rank1} and {rank2} are not comparable"))
+        });
         result.reverse();
         result
     }
 
-    pub fn add_document(&mut self, file_path: PathBuf, last_modified: SystemTime, content: &[char]) {
+    pub fn add_document(
+        &mut self,
+        file_path: PathBuf,
+        last_modified: SystemTime,
+        content: &[char],
+    ) {
         self.remove_document(&file_path);
 
         let mut tf = TermFreq::new();
@@ -80,7 +89,14 @@ impl Model {
             }
         }
 
-        self.docs.insert(file_path, Doc {count, tf, last_modified});
+        self.docs.insert(
+            file_path,
+            Doc {
+                count,
+                tf,
+                last_modified,
+            },
+        );
     }
 }
 

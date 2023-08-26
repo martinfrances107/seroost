@@ -55,7 +55,9 @@ fn parse_entire_pdf_file(file_path: &Path) -> Result<String, ()> {
 
     let n = pdf.n_pages();
     for i in 0..n {
-        let page = pdf.page(i).unwrap_or_else(|| panic!("{i} is within the bounds of the range of the page"));
+        let page = pdf
+            .page(i)
+            .unwrap_or_else(|| panic!("{i} is within the bounds of the range of the page"));
         if let Some(content) = page.text() {
             result.push_str(content.as_str());
             result.push(' ');
