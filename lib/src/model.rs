@@ -6,7 +6,7 @@ use std::time::SystemTime;
 
 type DocFreq = HashMap<String, usize>;
 type TermFreq = HashMap<String, usize>;
-#[derive(Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Doc {
     tf: TermFreq,
     count: usize,
@@ -15,7 +15,7 @@ pub struct Doc {
 }
 type Docs = HashMap<PathBuf, Doc>;
 
-#[derive(Default, Deserialize, Serialize)]
+#[derive(Debug, Default, Deserialize, Serialize)]
 pub struct Model {
     pub docs: Docs,
     pub df: DocFreq,

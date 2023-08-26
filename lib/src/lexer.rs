@@ -1,3 +1,4 @@
+#[derive(Debug)]
 pub struct Lexer<'a> {
     content: &'a [char],
 }
