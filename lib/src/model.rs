@@ -50,7 +50,9 @@ impl Model {
             }
             // TODO: investigate the sources of NaN
             if !rank.is_nan() {
-                result.push((path.clone(), rank));
+                if rank != 0_f32 {
+                    result.push((path.clone(), rank));
+                }
             }
         }
         result.sort_by(|(_, rank1), (_, rank2)| {
