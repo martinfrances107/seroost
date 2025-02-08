@@ -49,10 +49,8 @@ impl Model {
                 rank += compute_tf(token, doc) * compute_idf(token, self.docs.len(), &self.df);
             }
             // TODO: investigate the sources of NaN
-            if !rank.is_nan() {
-                if rank != 0_f32 {
-                    result.push((path.clone(), rank));
-                }
+            if !rank.is_nan() && rank != 0_f32 {
+                result.push((path.clone(), rank));
             }
         }
         result.sort_by(|(_, rank1), (_, rank2)| {
